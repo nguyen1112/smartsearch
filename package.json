@@ -1,0 +1,35 @@
+{
+  "name": "smartsearch-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/website",
+    "apps/smartsearch/frontend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev:website": "npm run dev --workspace=@smartsearch/website",
+    "build:website": "npm run build --workspace=@smartsearch/website",
+    "start:website": "npm run start --workspace=@smartsearch/website",
+    "dev:app": "cd apps/smartsearch && poetry run python -m smart_search.main --mode dev",
+    "start:app": "cd apps/smartsearch && poetry run python -m smart_search.main --mode prod",
+    "install:app": "cd apps/smartsearch && poetry install",
+    "package:app": "cd apps/smartsearch && poetry build",
+    "build:app-frontend": "npm run build --workspace=@smartsearch/app",
+    "docker:up": "cd apps/smartsearch/smart_search && TYPESENSE_DATA_DIR=$HOME/.local/share/smartsearch/typesense-data docker compose up -d",
+    "docker:down": "cd apps/smartsearch/smart_search && TYPESENSE_DATA_DIR=$HOME/.local/share/smartsearch/typesense-data docker compose down",
+    "clean:containers": "cd apps/smartsearch/smart_search && TYPESENSE_DATA_DIR=$HOME/.local/share/smartsearch/typesense-data docker compose rm -sf && echo '✅ Containers removed (project only)'",
+    "clean:images": "cd apps/smartsearch/smart_search && TYPESENSE_DATA_DIR=$HOME/.local/share/smartsearch/typesense-data docker compose down --rmi local && echo '✅ Images removed (project only)'",
+    "clean:images-full": "cd apps/smartsearch/smart_search && TYPESENSE_DATA_DIR=$HOME/.local/share/smartsearch/typesense-data docker compose down --rmi local && docker image prune -af && echo '✅ Images and dependencies removed (shows realistic pull progress)'",
+    "clean:docker": "cd apps/smartsearch/smart_search && TYPESENSE_DATA_DIR=$HOME/.local/share/smartsearch/typesense-data docker compose down -v --rmi local && echo '✅ Docker cleaned: containers, volumes, and images removed (project only)'",
+    "clean:db": "rm -f ~/.local/share/smartsearch/smart_search.db && echo '✅ Database removed'",
+    "clean:typesense": "sudo rm -rf ~/.local/share/smartsearch/typesense-data && echo '✅ Typesense data removed'",
+    "clean:all": "npm run clean:docker && npm run clean:db && npm run clean:typesense && echo '✅ Full cleanup complete - ready for fresh wizard test'",
+    "clean:all-full": "npm run clean:images-full && npm run clean:db && npm run clean:typesense && echo '✅ Complete cleanup with dependencies - realistic wizard test'"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.0"
+  },
+  "dependencies": {
+    "posthog-js": "^1.324.1"
+  }
+}
