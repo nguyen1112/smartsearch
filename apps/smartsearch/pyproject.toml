@@ -2,7 +2,7 @@
 name = "smartsearch"
 version = "0.1.18a6"
 description = "Smart local file search engine that understands your files"
-authors = ["Nguyen T Nguyen <nnguyen.t.nguyen@gmail.com>"]
+authors = [{ name = "Nguyen T Nguyen", email = "nnguyen.t.nguyen@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.11,<3.15"
 license = { text = "GPL-3.0-or-later" }
