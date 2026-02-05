@@ -144,12 +144,6 @@ newgrp docker
 
 ---
 
-## License
-
-Apache 2.0 - Copyright © 2026 Nguyen T Nguyen
-
----
-
 ## Contact
 
 **Nguyen T Nguyen**
@@ -158,4 +152,8 @@ Apache 2.0 - Copyright © 2026 Nguyen T Nguyen
 
 ---
 
-Made with ❤️ by Nguyen T Nguyen
+## License & Credits
+
+Apache 2.0 License - Copyright © 2026 Nguyen T Nguyen
+
+Based on [File Brain](https://github.com/Hamza5/file-brain) by Hamza Abbad
